@@ -1,4 +1,6 @@
 # Someone Bot
+Handle: [@someonebot2](https://twitter.com/SomeoneBot2)<br>
+Source: [CBDQ](https://cheapbotsdonequick.com/source/SomeoneBot2)
 
 ## Description
 [“Someone Bot”]( https://twitter.com/SomeoneBot2) is a Twitter bot created using [Cheap Bots Done Quick]( https://cheapbotsdonequick.com/) that posts a randomly generated sentence every three hours. Each sentence describes an object that someone bought from a well-known superstore or e-commerce site, and the price that they paid for it. Posts are all generated according to a [Tracery]( http://tracery.io/) grammar, and are not based on real data. However, the objects used in my generative model were obtained from Darius Kazemi’s excellent corpora [objects corpus]( https://github.com/dariusk/corpora/blob/master/data/objects/objects.json), with my own edits and additions.
