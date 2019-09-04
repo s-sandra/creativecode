@@ -5,6 +5,9 @@ Source: [CBDQ](https://cheapbotsdonequick.com/source/SomeoneBot2)
 ## Description
 [“Someone Bot”]( https://twitter.com/SomeoneBot2) is a Twitter bot created using [Cheap Bots Done Quick]( https://cheapbotsdonequick.com/) that posts a randomly generated sentence every three hours. Each sentence describes an object that someone bought from a well-known superstore or e-commerce site, and the price that they paid for it. Posts are all generated according to a [Tracery]( http://tracery.io/) grammar, and are not based on real data. However, the objects used in my generative model were obtained from Darius Kazemi’s excellent corpora [objects corpus]( https://github.com/dariusk/corpora/blob/master/data/objects/objects.json), with my own edits and additions.
 
+### Permutations
+Someone Bot (as of September 2019) can generate 647 million unique posts. This includes 380 items, eleven stores and 154,900 possible prices.
+
 ## Inspiration
 My brother originally gave me the idea for Someone Bot when he suggested that I post items sold for the highest prices on Craigslist. I felt drawn to the concept, seeing that many of us are guilty of the occasional shopping splurge. It reminded me of those DealDash commercials, where users brag about the items they bought and their prices. While the bot’s output is certainly humorous, it also draws attention to issues of materialism and obsessive consumerism. Do we really need that extra china set just because it was on sale? How much are we actually willing to pay for a gallon of water? Is an expensive object inherently better? Are prices that seem absurd actually viable in a different place or time? 
 
