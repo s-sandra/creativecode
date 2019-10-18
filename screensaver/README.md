@@ -1,5 +1,6 @@
 # Abstract Lava Lamp
-View Animation: https://editor.p5js.org/s-sandra/present/c7eT53r2D
+View live animation: https://editor.p5js.org/s-sandra/present/c7eT53r2D
+p5.js sketch source code: https://editor.p5js.org/s-sandra/sketches/c7eT53r2D
 
 ## Project Description
 Created using [p5.js](https://editor.p5js.org/s-sandra/sketches/c7eT53r2D), the Abstract Lava Lamp animation is intended for use as a scalable screensaver, emulating the oozing mystery goo inside a lava lamp. It achieves this by randomly spawning semi-transparent circles on a canvas, each varying in size, color and opacity. The circles travel up or down, eventually fading out, producing a never-ending and ever-changing bubbly world.
