@@ -26,6 +26,7 @@ function setup() {
     blue: 251
   };
   colours = [orange, yellow, lemon, teal];
+  maxEvents = windowWidth / 6;
   createCanvas(windowWidth, windowHeight);
   background(100);
 }
