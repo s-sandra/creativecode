@@ -1,5 +1,5 @@
 # Abstract Lava Lamp
-View live animation: https://editor.p5js.org/s-sandra/present/c7eT53r2D
+View live animation: https://editor.p5js.org/s-sandra/present/c7eT53r2D<br>
 p5.js sketch source code: https://editor.p5js.org/s-sandra/sketches/c7eT53r2D
 
 ## Project Description
