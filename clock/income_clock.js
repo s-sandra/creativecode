@@ -13,8 +13,6 @@ var labelFont;
 var dollarFont;
 var tagWidth;
 
-// https://www.numbeo.com/cost-of-living/prices_by_country.jsp
-
 function preload() {
   labelFont = loadFont("Poppins-SemiBold.ttf");
   dollarFont = loadFont("Segment7Standard.otf");
