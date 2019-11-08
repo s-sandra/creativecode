@@ -34,7 +34,7 @@ function setup() {
   flag = loadImage("https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg");
   countries.push(new Country("China", flag, 6180))
 
-  flag = loadImage("https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg");
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg");
   countries.push(new Country("Brazil", flag, 7522))
 
   flag = loadImage("https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg");
