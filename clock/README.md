@@ -1,9 +1,6 @@
-# Concentric Clock
+# Income Clock
+View live demo: https://editor.p5js.org/s-sandra/present/AqvxNhFww<br>
+p5.js sketch source code: https://editor.p5js.org/s-sandra/sketches/AqvxNhFww
 
-This is an abstract clock I made with p5.js. The easiest way to see it in action is to copy the contents of [the javascript file](concentric-clock.js)  into a [p5.js editor](http://editor.p5js.org) and run it.
-
-To read the clock's time, you have to count the number of dots in each circle. The inner ring (green) is hours, the middle ring (purple) is the number of minutes past the hour, and the outer (red) ring is the number of seconds past the minute.
-
-The concepts demonstrated in the code rely on some of the examples shared by Golan Levin in the instructions for his class's [clock assignment](https://github.com/golanlevin/lectures/tree/master/lecture_clock), and the look of it sort of resembles the soft bubbles of [bokeh photography](https://en.wikipedia.org/wiki/Bokeh).
-
-I like the abstract nature of this clock, even though that abstractness makes it less useful. I figure there are so many ways now to know what time it is (as I type this, I can see the current time displayed by my computer, by the watch on my wrist, and my phone on the desk next to me) that the goal of a time-based art work isn't so much to tell us what time it is but rather to encourage us to think about time and its representation.
+## Project Description
+This [p5.js](https://editor.p5js.org/s-sandra/sketches/c7eT53r2D) clock builds off the old adage “time is money,” representing system time in the style of a currency exchange board. The dollar amount attached to each country changes every second, depending on the nation’s yearly median household income (obtained from the [world population review](http://worldpopulationreview.com/countries/median-income-by-country/)). The rate of change is calculated by computing how much money an average citizen in that country makes each second, or dividing salary by the total number of seconds in the year. Therefore, countries with higher median earnings change at faster rates than countries at the end of the currency exchange board, whose values increment only every few seconds.
