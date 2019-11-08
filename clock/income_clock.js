@@ -5,10 +5,7 @@
 */
 var SECONDS = 60 * 525600; // number of seconds in day
 var lastSecond;
-var rate = [];
-var income = [];
-var country = [];
-var flag = [];
+var countries = [];
 var labelFont;
 var dollarFont;
 var tagWidth;
@@ -20,91 +17,66 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  var flag;
 
   // 2019 median household incomes obtained from
   // worldpopulationreview.com/countries/median-income-by-country/
   
-  var LiberiaRate = calcSalaryPerSecond(781);
-  var LiberiaMoney = calcMoney(LiberiaRate);
-  rate.push(LiberiaRate);
-  income.push(LiberiaMoney);
-  country.push("Liberia");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/commons/b/b8/Flag_of_Liberia.svg"));
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/commons/b/b8/Flag_of_Liberia.svg");
+  countries.push(new Country("Liberia", flag, 781))
   
-  var GhanaRate = calcSalaryPerSecond(2050);
-  var GhanaMoney = calcMoney(GhanaRate);
-  rate.push(GhanaRate);
-  income.push(GhanaMoney);
-  country.push("Ghana");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Ghana.svg"));
-  
-  var IndiaRate = calcSalaryPerSecond(3168);
-  var IndiaMoney = calcMoney(IndiaRate);
-  rate.push(IndiaRate);
-  income.push(IndiaMoney);
-  country.push("India");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"));
-  
-  var ChinaRate = calcSalaryPerSecond(6180);
-  var ChinaMoney = calcMoney(ChinaRate);
-  rate.push(ChinaRate);
-  income.push(ChinaMoney);
-  country.push("China");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg"));
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Ghana.svg");
+  countries.push(new Country("Ghana", flag, 2050))
 
-  var BrazilRate = calcSalaryPerSecond(7522);
-  var BrazilMoney = calcMoney(BrazilRate);
-  rate.push(BrazilRate);
-  income.push(BrazilMoney);
-  country.push("Brazil");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"));
-  
-  var RussiaRate = calcSalaryPerSecond(11724);
-  var RussiaMoney = calcMoney(RussiaRate);
-  rate.push(RussiaRate);
-  income.push(RussiaMoney);
-  country.push("Russia");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg"));
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg");
+  countries.push(new Country("India", flag, 3168))
 
-  var SaudiRate = calcSalaryPerSecond(24980);
-  var SaudiMoney = calcMoney(SaudiRate);
-  rate.push(SaudiRate);
-  income.push(SaudiMoney);
-  country.push("Saudi Arabia");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"));
-  
-  var JapanRate = calcSalaryPerSecond(33822);
-  var JapanMoney = calcMoney(JapanRate);
-  rate.push(JapanRate);
-  income.push(JapanMoney);
-  country.push("Japan");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg"));
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg");
+  countries.push(new Country("China", flag, 6180))
 
-  var USRate = calcSalaryPerSecond(43585);
-  var USMoney = calcMoney(USRate);
-  rate.push(USRate);
-  income.push(USMoney);
-  country.push("United States");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"));
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg");
+  countries.push(new Country("Brazil", flag, 7522))
+
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg");
+  countries.push(new Country("Russia", flag, 11724))
+
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg");
+  countries.push(new Country("Saudi Arabia", flag, 24980))
+
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg");
+  countries.push(new Country("Japan", flag, 33822))
+
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg");
+  countries.push(new Country("United States", flag, 43585))
   
-  var SwedenRate = calcSalaryPerSecond(50514);
-  var SwedenMoney = calcMoney(SwedenRate);
-  rate.push(SwedenRate);
-  income.push(SwedenMoney);
-  country.push("Sweden");
-  flag.push(loadImage("https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg"));
+  flag = loadImage("https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg");
+  countries.push(new Country("Sweden", flag, 50514))
   
   var maxWidth = 0;
   textSize(height / 23);
   textFont(labelFont);
   
-  for (var i = 0; i < country.length; i++) {
-    var len = textWidth(country[i].toUpperCase());
+  for (var i = 0; i < countries.length; i++) {
+    var len = textWidth(countries[i].name.toUpperCase());
     if (len > maxWidth) {
       maxWidth = len;
     }
   }
   tagWidth = maxWidth;
+}
+
+class Country {
+  constructor(name, flag, salary) {
+    this.name = name;
+    this.flag = flag;
+    this.salary = salary;
+    this.rate = calcSalaryPerSecond(salary);
+    this.earnings = calcMoney(this.rate);
+  }
+  
+  addEarnings() {
+    this.earnings += this.rate;
+  }
 }
 
 /*
@@ -133,7 +105,6 @@ function calcMoney(rate) {
   var totalSeconds = (hour() * 60 * 60) + (minute() * 60); 
   return (totalSeconds + second()) * rate;
 }
-  
 
 function draw() {
   
@@ -142,29 +113,32 @@ function draw() {
   textSize(textHeight);
   textFont(dollarFont);
   
-  // max width of earning amounts
-  var dollarWidth = textWidth("$ 000.000"); 
+  var dollarWidth = textWidth("$ 000.000"); // max width of earning amounts
   var dateWidth = textWidth("00 00");
   var flagWidth = 50 + (width / 100);
   var padding = height / 40;
   
-  var col1 = width/2 - (tagWidth / 1.5);
+  var col1 = width/2.5 - (tagWidth / 1.5);
   var col0 = col1 - flagWidth;
   var col2 = col1 + tagWidth + padding + 10;
+  var col3 = col2 + dollarWidth + padding + 20;
   
   fill('white');
   textFont(labelFont);
+  text("DAILY", col2 - padding + (textWidth("EARNINGS") / 4), height - (height - (height / 10)) - textHeight);
   text("EARNINGS", col2 - padding, height - (height - (height / 10)));
+  text("SALARY", col3, height - (height - (height / 10)));
   
   // if the second has changed, increment country earnings
   if (second() != lastSecond) {
-    for (var i = 0; i < income.length; i++) {
-      income[i] += rate[i];
+    for (var i = 0; i < countries.length; i++) {
+      countries[i].addEarnings();
     }
   }
   lastSecond = second();
   
-  for (var i = 0; i < country.length; i++) {
+  for (var i = 0; i < countries.length; i++) {
+    var country = countries[i];
     var row = height - (height/5 + (i * (height / 14)));
     var top = row - textHeight - (textHeight/4);
         
@@ -173,17 +147,24 @@ function draw() {
     rect(col2 - padding, top, dollarWidth + padding, textHeight + padding);
     textFont(dollarFont);
     fill(color(255, 110, 117));
-    text(format(income[i].toFixed(3)), col2, row);
+    text(format(country.earnings.toFixed(3)), col2, row);
+    
+    /* Draws yearly income for each country */
+    fill('black');
+    rect(col3 - padding, top, dollarWidth + padding, textHeight + padding);
+    textFont(dollarFont);
+    fill(color(255, 110, 117));
+    text(format(country.salary), col3, row);
     
     /* Draws flag and label for each country */
-    image(flag[i], col0 - flagWidth/5, top, flagWidth, textHeight + padding);
+    image(country.flag, col0 - flagWidth/5, top, flagWidth, textHeight + padding);
     fill('white');
     noStroke();
     rect(col1 - padding, top, tagWidth + padding, textHeight + padding);
     
     fill('black');
     textFont(labelFont);
-    text(country[i].toUpperCase(), col1, row);
+    text(country.name.toUpperCase(), col1, row);
     text("$", col1 + tagWidth - padding - (padding/2), row);
   }
   
