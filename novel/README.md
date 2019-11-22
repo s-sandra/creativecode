@@ -1,4 +1,4 @@
-![ascii_preview](https://github.com/s-sandra/creativecode/blob/master/novel/ascii_preview.JPG)
+![ascii_preview](https://github.com/s-sandra/creativecode/blob/master/novel/ascii_aquarium.gif)
 # ASCII Flipbook
 ## Project Description
 Created for [NaNoGenMo 2019]( https://nanogenmo.github.io/), this python program generates a PDF flipbook that contains pages of ASCII art, which transforms into an animation as you scroll through the document. Like impressionist pieces, the images are best viewed when zoomed out, in a PDF reader like Adobe Acrobat. I created the text using [a short snippet of code written by Christian Diener]( https://gist.github.com/cdiener/10567484).
