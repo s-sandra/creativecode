@@ -1,17 +1,27 @@
-# Three Ways to Generate a Novel
+![ascii_preview](https://github.com/s-sandra/creativecode/blob/master/novel/ascii_preview.JPG)
+# ASCII Flipbook
+## Project Description
+Created for [NaNoGenMo 2019]( https://nanogenmo.github.io/), this python program generates a PDF flipbook that contains pages of ASCII art, which transforms into an animation as you scroll through the document. Like impressionist pieces, the images are best viewed when zoomed out. I created the text using [a short snippet of code written by Christian Diener]( https://gist.github.com/cdiener/10567484).
 
-This project folder contains three different examples for generating a novel, as definied by [NaNoGenMo](http://nanogenmo.github.io). 
+## Contents
+- ascii_beach.pdf: Calming Ocean Waves (Tobago). [YouTube]( https://www.youtube.com/watch?v=oNBX7Ag2Wgc).
+- ascii_waves.pdf: Ocean Waves Slow Motion Video. [YouTube]( https://www.youtube.com/watch?v=dJhOgDoKZmI).
+- ascii_aquarium.pdf: Underwater Marine Life. [YouTube](https://www.youtube.com/watch?v=ou9lYK9g2G8).
+- grape_vine.pdf: A video of my backyard that I used for testing.
 
-## Rainy Days
-The python scripts in [my_rainy_day.py](my_rainy_day.py) and [another_rainy_day.py](another_rainy_day.py) generate novels by randomly repeating and arranging the words "drip" and "drop". The first uses punctionation to mimic the syntax of prose and the second prints the words vertically as a concrete poem about rain.
+## Dependencies
+To generate your own ASCII flipbook, you will need to install OpenCV for video processing, Pillow and NumPy for image processing and ReportLab for PDF generation. This can be done by running the following commands.
 
-## Recipes for Revolution
-This [python script](revolution_recipes.py) uses a Markov chain generator on some input text to generate novels that should sound something like Karl Marx mashed up with a recipe book. The script expects a file called "combined.txt" in the same directory that the script runs in, so in the example case, that file consists of text from _The Communist Manifesto_ and a recipe book.
+```
+pip install opencv-python
+pip install reportlab
+pip install Pillow
+pip install numpy
+```
 
-The script also includes some libraries useful for formatting and printing the resulting text as a PDF document, so in addition to [markovify](https://github.com/jsvine/markovify), you'll also need [pdfkit](https://pypi.org/project/pdfkit/), [wkhtmltopdf](https://wkhtmltopdf.org/), and [dominate](https://github.com/Knio/dominate/).
+## How It Works
+To create the animation, I took a short video file and split it into individual frames using OpenCV. I then fed all the images through the asciinator and wrote their results to a PDF using ReportLab. The latter step was the most challenging, since I wanted to size the PDF pages to fit the content of the ASCII image, rather than default to a standard document size. This required passing a row of ASCII text to `stringWidth()`, a function from ReportLab’s pdfmetrics module, to compute the image width. I estimated the image height by multiplying the number of rows in the ASCII image by the font size and 1.2 (since ReportLab uses a gap of 20 percent of the font size to space out lines of text).
 
-## Tracery Bookery
-The enclosed [story.json](story.json) file is a Tracery grammar that should expand a few sentences into something like 50,000 words. The actual word count will vary based on the length and number of the core sentences.
-
-This JSON file can be dropped into [this template](https://github.com/zachwhalen/bookery).
+## Output
+The ASCII flipbook generator creates a PDF file and a text file, as well as a folder that contains the individual video frames. It also prints out an estimation of the novel’s word count, by splitting the output string on spaces. The sample animations included in this repository are derived from personal and YouTube videos, but the generator can theoretically turn any video files (ideally less than 1000 frames) into novels, so long as they are supported by OpenCV. You may have to play with asciinator’s intensity attribute to get recognizable images.
 
