@@ -31,7 +31,7 @@ function setup() {
   
   flag = loadImage("https://upload.wikimedia.org/wikipedia/commons/b/b8/Flag_of_Liberia.svg");
   var cost = [];
-  cost["gas liter"] = 0.58;
+  cost["liter of gas"] = 0.58;
   cost["water bottle"] = 0.68;
   cost["milk jug"] = 0.99;
   cost["egg carton"] = 1.60;
@@ -76,6 +76,7 @@ function setup() {
   cost["beer bottle"] = 2.93;
   cost["beef round"] = 5.73;
   cost["McMeal"] = 6.11;
+  cost["taxi ride"] = 7.13;
   cost["three course meal"] = 24.42;
   countries.push(new Country("Brazil", flag, 7522, cost))
 
@@ -85,6 +86,7 @@ function setup() {
   cost["beer bottle"] = 1.10;
   cost["taxi ride"] = 4.75;
   cost["beef round"] = 6.61;
+  cost["tennis reservation"] = 15.74;
   cost["monthly bus ticket"] = 26.91;
   cost["three course meal"] = 31.66;
   countries.push(new Country("Russia", flag, 11724, cost))
@@ -97,27 +99,31 @@ function setup() {
   cost["McMeal"] = 5.93;
   cost["movie ticket"] = 13.46;
   cost["three course meal"] = 21.54;
-  cost["sneaker pair"] = 80.22;
+  cost["monthly bus ticket"] = 40.40;
+  cost["pair of sneakers"] = 80.22;
   countries.push(new Country("Saudi Arabia", flag, 24980, cost))
 
   flag = loadImage("https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg");
   cost = [];
   cost["water bottle"] = 0.97;
+  cost["bread loaf"] = 1.69;
   cost["rice bag"] = 3.98;
-  cost["taxi ride"] = 29.92;
   cost["McMeal"] = 6.28;
+  cost["taxi ride"] = 29.92;
   cost["three course meal"] = 36.93;
-  cost["sneaker pair"] = 71.62;
+  cost["pair of jeans"] = 65.54;
+  cost["pair of sneakers"] = 71.62;
   countries.push(new Country("Japan", flag, 33822, cost))
 
   flag = loadImage("https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg");
   cost = [];
   cost["water bottle"] = 1.41;
-  cost["beef round"] = 11.63;
   cost["coffee cup"] = 3.96;
   cost["McMeal"] = 7.07;
+  cost["beef round"] = 11.63;
+  cost["fitness club card"] = 36.56;
   cost["three course meal"] = 50.50;
-  cost["sneaker pair"] = 74.17;
+  cost["pair of sneakers"] = 74.17;
   countries.push(new Country("United States", flag, 43585, cost))
   
   flag = loadImage("https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg");
@@ -126,8 +132,10 @@ function setup() {
   cost["beer bottle"] = 5.86;
   cost["movie ticket"] = 12.77;
   cost["McMeal"] = 7.99;
+  cost["fitness club card"] = 35.44;
   cost["three course meal"] = 63.89;
-  cost["sneaker pair"] = 92.47;
+  cost["monthly bus pass"] = 85.11;
+  cost["pair of sneakers"] = 92.47;
   countries.push(new Country("Sweden", flag, 50514, cost))
   
   var maxWidth = 0;
@@ -225,14 +233,14 @@ function draw() {
   var dollarWidth = textWidth("$ 000.000"); // max width of earning amounts
   var dateWidth = textWidth("00 00");
   var purchasingLabelWidth = textWidth("0 monthly bus pass");
-  var flagWidth = 50 + (width / 100);
   var padding = height / 40;
+  var flagWidth = (tagWidth + padding) / 3;
   
   var col1 = width/3.5 - (tagWidth / 1.5);
   var col0 = col1 - flagWidth;
-  var col2 = col1 + tagWidth + padding + 10;
-  var col3 = col2 + dollarWidth + padding + 20;
-  var col4 = col3 + dollarWidth + padding + 20;
+  var col2 = col1 + tagWidth + padding + width/50;
+  var col3 = col2 + dollarWidth + padding + width/60;
+  var col4 = col3 + dollarWidth + padding + width/60;
   
   fill('white');
   textFont(labelFont);
@@ -296,15 +304,15 @@ function draw() {
     
     
     /* Draws flag and label for each country */
-    image(country.flag, col0 - flagWidth/5, top, flagWidth, textHeight + padding);
+    image(country.flag, col0 - padding + padding/2, top, flagWidth, textHeight + padding);
     fill('white');
     noStroke();
-    rect(col1 - padding, top, tagWidth + padding, textHeight + padding);
+    rect(col1 - padding + padding/2, top, tagWidth + padding, textHeight + padding);
     
     fill('black');
     textFont(labelFont);
     text(country.name.toUpperCase(), col1, row);
-    text("$", col1 + tagWidth - padding - (padding/2), row);
+    text("$", col1 + tagWidth - padding, row);
   }
   
   /* Draws date label */
@@ -317,5 +325,5 @@ function draw() {
   /* Draws date */
   fill(color(255, 110, 117));
   textFont(dollarFont);
-  text(month() + " " + day(), col1 + padding/2, height - textHeight * 1.2);
+  text(month() + " " + day(), col1 + padding/3, height - textHeight * 1.2);
 }
