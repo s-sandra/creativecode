@@ -51,3 +51,43 @@ All that's left is smoke curls
 and I can’t move or run or flee but I must invite it back in me, 
 I am your other half, the side no one wants to see
 ```
+
+## UPDATE: Poetry Battles
+Rather than attempt to create rhyming poetry, which might not work, given the small size of the corpus, I decided to generate brand new
+poetry using a Markov model. In this new version, I create stanzas by either pulling a random line from the Collective Mind submissions
+or prompting the model to generate a sentence. To keep the output short, I made sure that each "speaker" contributed lines that are at most fifteen words long, as shown below. To create an element of poetic repetition, each stanza begins with the same line, spoken by
+CM.
+
+```
+        The Collective Mind
+        by Brooke Point High School and a Markov chain
+
+    CM: You are not a person.
+MARKOV: She falls to the lyric.
+ 	To be not a person.
+        If thunder rolls our love is alive, But our end is close by.
+
+
+    CM: You are not a person.
+MARKOV: So as I bring a cappuccino to my oblivious audience.
+        He is strong but yet more delicate to touch for me to where she was.
+        And heavy as my heart won’t listen to its plea.
+
+
+    CM: You are not a person.
+    	But that's where I went wrong I guess.
+    	From the times I slipped and didn’t trust.
+    	I’m not quite sure where I’m headed.
+
+
+    CM: You are not a person.
+  	Something I dare not to do.
+MARKOV: I wish, I wish I belonged here.
+        The rambling dissonance in a warzones trench.
+
+
+    CM: You are not a person.
+MARKOV: He leaped as the water apart.
+ 	Synonymous with my thoughts.
+ 	The damp earth.
+```
