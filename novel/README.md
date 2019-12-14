@@ -10,11 +10,12 @@ Created for [NaNoGenMo 2019](https://github.com/NaNoGenMo/2019/issues/106), this
 - grape_vine.pdf: A video of my backyard that I used for testing.
 
 ## Dependencies
-To generate your own ASCII flipbook, you will need to install OpenCV for video processing, Pillow and NumPy for image processing and ReportLab for PDF generation. This can be done by running the following commands.
+To generate your own ASCII flipbook, you will need to install OpenCV for video processing, Pillow and NumPy for image processing and ReportLab for PDF generation. If you would like to combine your generated flipbooks into one PDF, you will need to have installed PyPDF2. This can be done by running the following commands.
 
 ```
 pip install opencv-python
 pip install reportlab
+pip install pypdf2
 pip install Pillow
 pip install numpy
 ```
@@ -24,4 +25,11 @@ To create the animation, I took a short video file and split it into individual 
 
 ## Output
 The ASCII flipbook generator creates a PDF file and a text file, as well as a folder that contains the individual video frames. It also prints out an estimation of the novel’s word count, by splitting the output string on spaces. The sample animations included in this repository are derived from personal and YouTube videos, but the generator can theoretically turn any video files (ideally less than 1000 frames) into novels, so long as they are supported by OpenCV. You may have to play with asciinator’s intensity attribute to get recognizable images.
+
+## Merging Flipbooks
+Once you have created several flipbook PDFs, you can merge them into one giant flipbook using `merge.py`. It accepts the name of the outputted PDF, followed by a list of the PDF files you wish to combine. They will be merged in the order specified. Below is an example command that creates an ASCII Ocean PDF in the current directory.
+
+```
+python3 merge.py ascii_ocean.pdf ascii_beach.pdf ascii_waves.pdf ascii_aquarium.pdf
+```
 
