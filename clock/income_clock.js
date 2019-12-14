@@ -295,7 +295,7 @@ function draw() {
     var total = power[1];
     text(total, col4, row);
     
-    if (total > 1) {
+    if (total != 1) {
       text(" " + item + "s", col4 + padding, row);
     }
     else {
