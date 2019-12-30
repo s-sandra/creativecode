@@ -134,7 +134,7 @@ function setup() {
   cost["McMeal"] = 7.99;
   cost["fitness club card"] = 35.44;
   cost["three course meal"] = 63.89;
-  cost["monthly bus pass"] = 85.11;
+  cost["monthly bus ticket"] = 85.11;
   cost["pair of sneakers"] = 92.47;
   countries.push(new Country("Sweden", flag, 50514, cost))
   
@@ -178,9 +178,18 @@ class Country {
       var cost = this.prices[item];
       var quantity = parseInt(this.earnings / cost);
       
-      if (quantity != 0 && quantity < minQuantity) {
-        minQuantity = quantity;
-        chosenItem = item;
+      if (quantity != 0 && quantity <= minQuantity) {
+        // if quantity same, but this item is more expensive
+        if (quantity == minQuantity && 
+            cost > this.prices[chosenItem]) {
+          minQuantity = quantity;
+          chosenItem = item;
+        }
+        else {
+          minQuantity = quantity;
+          chosenItem = item;
+        }
+        
       }
     }
     
@@ -320,7 +329,7 @@ function draw() {
   text("DATE", col1, height - (height / 10));
   fill("black");
   rect(col1, height - (height / 10) + textHeight/2, 
-       dateWidth + padding, textHeight + padding);
+       dateWidth + padding * 1.3, textHeight + padding);
   
   /* Draws date */
   fill(color(255, 110, 117));
