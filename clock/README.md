@@ -12,5 +12,5 @@ Originally, I planned to create an animation of falling coins, whereby the quant
 ## Revision Ideas
 In the future, I want to add a third column to the income clock that places each daily earning into context, such as by exhibiting purchasing power for each country. Given the current amount at a given time, what can a person in each nation purchase with that money? To implement this, I can use the [Numbeo Database]( https://www.numbeo.com/cost-of-living/prices_by_country.jsp), which lists the prices of various goods across multiple countries. Alternatively, I might list the actual currency exchange rate or simply the yearly salary.
 
-## REVISION
+## Revision 1
 I ended up implementing my purchasing power idea. In addition to the yearly salary per country, I added an extra column that lists the most expensive good or service a person can buy, given the current accumulated daily earnings. To do this, I selected six items from [Travel Tables]( https://traveltables.com/), which includes information on 2019 prices for various goods around the world. I tried to vary the selections according to expense level and daily salary per country. The results are rather surprising, and I think effectively demonstrate the differing lifestyles between first, second and third world nations.
