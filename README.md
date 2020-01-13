@@ -1,2 +1,2 @@
-# creativecode
-This repository is a template for my Creative Coding students to fork and eventually use for their own projects.
+# Creative Coding
+Creative Coding ([DGST 301A](https://zachwhalen.github.io/creativecoding/)) is a special topic digital studies course taught by [Zach Whalen](https://github.com/zachwhalen) and offered at the University of Mary Washington. Introducing students to computer programming through the formation and realization of artistic goals, the course emphasizes the value of the creative process through the production of self-inspired animations, bots, graphic art, poetry and literature using Python and p5.js.
